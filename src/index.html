@@ -22,16 +22,47 @@
   </style>
 </head>
 <body>
+  <header class="header">
+    <h1 class="title">IP Address Tracker</h1>
 
-  IP Address Tracker
+    <form id="ip-form" class="ip-form" aria-label="Search for IP address or domain">
+      <label for="ip-input" class="sr-only">Search for any IP address or domain</label>
+      <input
+        type="text"
+        id="ip-input"
+        class="ip-input"
+        placeholder="Search for any IP address or domain"
+        aria-required="true"
+      />
+      <button type="submit" class="submit-btn" aria-label="Search button">
+        <img src="./images/icon-arrow.svg" alt="" />
+      </button>
+    </form>
+  </header>
 
-  Search for any IP address or domain
+  <section class="results-container" aria-live="polite">
+    <div class="result-box">
+      <h2>IP Address</h2>
+      <p id="ip-display">-</p>
+    </div>
 
-  IP Address
-  Location
-  Timezone
-    UTC <!-- add offset value dynamically using the API -->
-  ISP
+    <div class="result-box">
+      <h2>Location</h2>
+      <p id="location-display">-</p>
+    </div>
+
+    <div class="result-box">
+      <h2>Timezone</h2>
+      <p id="timezone-display">UTC -</p>
+    </div>
+
+    <div class="result-box">
+      <h2>ISP</h2>
+      <p id="isp-display">-</p>
+    </div>
+  </section>
+
+  <div id="map" class="map"></div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
