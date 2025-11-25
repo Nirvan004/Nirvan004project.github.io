@@ -5,6 +5,14 @@ const locationDisplay = document.getElementById("location-display");
 const timezoneDisplay = document.getElementById("timezone-display");
 const ispDisplay = document.getElementById("isp-display");
 
+let map = L.map("map").setView([0, 0], 2);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 18,
+}).addTo(map);
+
+let marker = L.marker([0, 0]).addTo(map);
+
 const apiKey = "api-key";
 
 async function fetchIPData(query = "") {
@@ -59,10 +67,7 @@ form.addEventListener("submit", async function (event) {
   input.value = "";
 });
 
-let map = L.map("map").setView([0, 0], 2);
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  maxZoom: 18,
-}).addTo(map);
-
-let marker = L.marker([0, 0]).addTo(map);
+window.addEventListener("load", async function () {
+  const data = await fetchIPData();
+  updateUI(data);
+});
