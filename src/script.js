@@ -40,3 +40,15 @@ function updateUI(data) {
   timezoneDisplay.textContent = `UTC ${data.location.timezone}`;
   ispDisplay.textContent = data.isp;
 }
+
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+  const query = input.value.trim();
+  if (!query) {
+    alert("Please enter an IP address or domain.");
+    return;
+  }
+  const data = await fetchIPData(query);
+  updateUI(data);
+  input.value = "";
+});
