@@ -39,6 +39,12 @@ function updateUI(data) {
   locationDisplay.textContent = `${data.location.city}, ${data.location.region}`;
   timezoneDisplay.textContent = `UTC ${data.location.timezone}`;
   ispDisplay.textContent = data.isp;
+
+  const lat = data.location.lat;
+  const lng = data.location.lng;
+
+  map.setView([lat, lng], 13);
+  marker.setLatLng([lat, lng]);
 }
 
 form.addEventListener("submit", async function (event) {
@@ -52,3 +58,11 @@ form.addEventListener("submit", async function (event) {
   updateUI(data);
   input.value = "";
 });
+
+let map = L.map("map").setView([0, 0], 2);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 18,
+}).addTo(map);
+
+let marker = L.marker([0, 0]).addTo(map);
