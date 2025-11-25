@@ -11,12 +11,13 @@ async function fetchIPData(query = "") {
     let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
 
   if (query) {
-    if (/^\d+\.\d+\.\d+\.\d+$/.test(query)) {
-      url += `&ipAddress=${query}`;
-    } else {
-      url += `&domain=${query}`;
-    }
+  const parts = query.split(".");
+  if (parts.length === 4 && parts.every(part => Number(part) >= 0)) {
+    url += `&ipAddress=${query}`;
+  } else {
+    url += `&domain=${query}`;
   }
+}
 
   try {
     const response = await fetch(url);
@@ -29,4 +30,13 @@ async function fetchIPData(query = "") {
     console.error(error);
     alert("Invalid IP address or domain. Please try again.");
   }
+}
+
+function updateUI(data) {
+  if (!data) return;
+
+  ipDisplay.textContent = data.ip;
+  locationDisplay.textContent = `${data.location.city}, ${data.location.region}`;
+  timezoneDisplay.textContent = `UTC ${data.location.timezone}`;
+  ispDisplay.textContent = data.isp;
 }
