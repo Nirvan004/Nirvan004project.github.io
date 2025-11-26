@@ -40,3 +40,23 @@ button:focus {
   outline: 3px solid hsl(228, 95%, 67%);
   outline-offset: 2px;
 }
+
+.header {
+  background: url("./images/pattern-bg-mobile.png") no-repeat center / cover;
+  padding: 1.5rem 1rem 7.5rem;
+  text-align: center;
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .header {
+    background: url("./images/pattern-bg-desktop.png") no-repeat center / cover;
+    padding: 2rem 1rem 8.5rem;
+  }
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+}
