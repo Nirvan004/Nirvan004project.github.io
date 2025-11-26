@@ -60,3 +60,44 @@ button:focus {
   font-weight: 500;
   margin-bottom: 1.4rem;
 }
+
+.ip-form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.ip-input {
+  flex: 1;
+  padding: 1.1rem 1.2rem;
+  border: none;
+  font-size: 1rem;
+  color: var(--very-dark-gray);
+  outline: none;
+}
+
+.ip-input::placeholder {
+  color: var(--dark-gray);
+}
+
+.submit-btn {
+  background: var(--very-dark-gray);
+  border: none;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: hsl(0, 0%, 30%);
+}
+
+.submit-btn img {
+  width: 10px;
+}
