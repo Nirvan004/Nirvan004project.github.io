@@ -11,9 +11,16 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
 }).addTo(map);
 
-let marker = L.marker([0, 0]).addTo(map);
+const customIcon = L.icon({
+  iconUrl: './images/icon-location.svg',
+  iconSize: [46, 56],
+  iconAnchor: [23, 56],
+  popupAnchor: [0, -56]
+});
 
-const apiKey = "api-key";
+let marker = L.marker([0, 0], { icon: customIcon }).addTo(map);
+
+const apiKey = "at_yWn4bo0XrWupGb2mAAErQf9mDr6t7";
 
 async function fetchIPData(query = "") {
     let url = `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`;
@@ -32,7 +39,6 @@ async function fetchIPData(query = "") {
     if (!response.ok) throw new Error("API request failed");
 
     const data = await response.json();
-    console.log(data); // temporary: see the raw data
     return data;
   } catch (error) {
     console.error(error);
